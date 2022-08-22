@@ -1,4 +1,4 @@
-package Lista;
+package TdaLista;
 
 public class Nodo <T> {
     private T dato;

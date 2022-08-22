@@ -1,6 +1,6 @@
-package Lista;
+package TdaLista;
 
-public class TDALista<T> {
+public class Lista<T> {
     private Nodo inicio;
     private int size;
     Nodo nodo = new Nodo();
@@ -18,7 +18,7 @@ public class TDALista<T> {
         nuevo.setDato(dato);
 
         if(isEmpty())
-            inicio.setSiguiente(nuevo);
+            inicio = nuevo;
         else{
             Nodo aux = new Nodo();
             aux.setSiguiente(inicio);
