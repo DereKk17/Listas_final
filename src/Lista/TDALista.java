@@ -15,13 +15,13 @@ public class TDALista<T> {
 
     public void append(T dato){
         Nodo nuevo = new Nodo();
-
+        nuevo.setDato(dato);
 
         if(isEmpty())
-            inicio = nuevo;
+            inicio.setSiguiente(nuevo);
         else{
             Nodo aux = new Nodo();
-            aux.setSiguiente(nuevo);
+            aux.setSiguiente(inicio);
 
             while(aux.getSiguiente() != null){
                 aux = aux.getSiguiente();
@@ -33,31 +33,56 @@ public class TDALista<T> {
 
     public void appendComienzo(T dato){
         Nodo nuevo = new Nodo();
+        nuevo.setDato(dato);
 
         if(isEmpty())
-            inicio = nuevo;
+            inicio.setSiguiente(nuevo);
         else{
             nuevo.setSiguiente(inicio);
             inicio = nuevo;
         }
+        size++;
     }
 
-    public Nodo getIndexOf(T dato){
-        Nodo aux = new Nodo();
-        Nodo index = new Nodo();
-        aux.setSiguiente(inicio);
+    public Nodo buscar(T dato){
+        Nodo siguiente = new Nodo();
+        Nodo anterior = new Nodo();
+        siguiente.setSiguiente(inicio);
+        anterior.setSiguiente(siguiente);
 
-        while(aux.getSiguiente() != null){
+        while(siguiente.getSiguiente() != null){
 
-            if((aux.getDato() == dato)) {
-                index = aux;
+            if((siguiente.getDato() == dato)) {
                 break;
             }
-
-            aux = aux.getSiguiente();
+            siguiente = siguiente.getSiguiente();
+            anterior = anterior.getSiguiente();
 
         }
-        return index;
+        return anterior.getSiguiente();
+    }
+
+    public void appendEntre(T dato){
+        Nodo nuevo = new Nodo();
+        nuevo.setDato(dato);
+
+        Nodo siguiente = new Nodo();
+        Nodo anterior = new Nodo();
+        siguiente.setSiguiente(inicio);
+        anterior.setSiguiente(siguiente);
+
+        while(siguiente.getSiguiente() != null){
+
+            if((siguiente.getDato() == dato)){
+              anterior.setSiguiente(nuevo);
+              nuevo.setSiguiente(siguiente);
+              break;
+            }
+
+            siguiente = siguiente.getSiguiente();
+            anterior = anterior.getSiguiente();
+        }
+        size++;
     }
 
 }
