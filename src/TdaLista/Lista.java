@@ -44,25 +44,27 @@ public class Lista<T> {
         size++;
     }
 
-    public Nodo buscar(T dato){
+    public int buscar(T dato){
         Nodo siguiente = new Nodo();
         Nodo anterior = new Nodo();
         siguiente.setSiguiente(inicio);
         anterior.setSiguiente(siguiente);
 
+        int indice = 0;
         while(siguiente.getSiguiente() != null){
 
             if((siguiente.getDato() == dato)) {
                 break;
             }
+
             siguiente = siguiente.getSiguiente();
             anterior = anterior.getSiguiente();
-
+            indice ++;
         }
-        return anterior.getSiguiente();
+        return indice - 1 ;
     }
 
-    public void appendEntre(T dato){
+    public void appendEntre(T dato, T datoEnLista){
         Nodo nuevo = new Nodo();
         nuevo.setDato(dato);
 
@@ -73,7 +75,7 @@ public class Lista<T> {
 
         while(siguiente.getSiguiente() != null){
 
-            if((siguiente.getDato() == dato)){
+            if((siguiente.getDato() == datoEnLista)){
               anterior.setSiguiente(nuevo);
               nuevo.setSiguiente(siguiente);
               break;
@@ -83,6 +85,14 @@ public class Lista<T> {
             anterior = anterior.getSiguiente();
         }
         size++;
+    }
+
+    public String toString(){
+        String lista = "";
+        for(Nodo n = inicio; n != null; n = n.getSiguiente()){
+            lista = lista + " " + n.getDato();
+        }
+        return lista;
     }
 
 }
