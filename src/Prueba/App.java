@@ -13,15 +13,6 @@ public class App {
             listaNumeros.append(dato);
             dato++;
         }
-        System.out.println(listaNumeros);
-
-        listaNumeros.borrar(14);
-        System.out.println(listaNumeros.size());
-
-        System.out.println(listaNumeros);
-
-        listaNumeros.borrar(25);
-        System.out.println(listaNumeros.size());
 
     }
 }

@@ -44,7 +44,7 @@ public class Lista<T> {
         size++;
     }
 
-    public int buscar(T dato){
+    public int obtenerIndiceDe(T dato){
         Nodo siguiente = new Nodo();
         Nodo anterior = new Nodo();
         siguiente.setSiguiente(inicio);
@@ -62,6 +62,23 @@ public class Lista<T> {
             indice ++;
         }
         return indice - 1 ;
+    }
+
+    public Object buscarPorIndice(int indice){
+        Nodo aux = new Nodo();
+        aux.setSiguiente(inicio);
+
+        int i = -1;
+
+        while(aux.getSiguiente() != null){
+            if(i == indice){
+                break;
+            }
+            aux = aux.getSiguiente();
+            i++;
+        }
+        return aux.getDato();
+
     }
 
     public void appendEntre(T dato, T datoEnLista){
@@ -100,9 +117,10 @@ public class Lista<T> {
         Nodo actual = new Nodo();
         Nodo siguiente = new Nodo();
 
+        siguiente.setSiguiente(inicio);
         actual.setSiguiente(siguiente);
         anterior.setSiguiente(actual);
-        siguiente.setSiguiente(inicio);
+
 
         while (actual.getSiguiente() != null) {
 
@@ -118,6 +136,20 @@ public class Lista<T> {
         anterior.setSiguiente(siguiente);
 
         size --;
+    }
+
+    public boolean esta(T dato){
+        Nodo aux = new Nodo();
+        aux.setSiguiente(inicio);
+        boolean estado = false;
+
+        while(aux.getSiguiente() != null){
+            if(aux.getDato() == dato){
+                estado = true;
+            }
+            aux = aux.getSiguiente();
+        }
+        return estado;
     }
 
 }
