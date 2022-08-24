@@ -1,4 +1,4 @@
-package Test;
+package Prueba;
 
 
 import TdaLista.Lista;
@@ -13,20 +13,15 @@ public class App {
             listaNumeros.append(dato);
             dato++;
         }
-
-
         System.out.println(listaNumeros);
+
+        listaNumeros.borrar(14);
         System.out.println(listaNumeros.size());
 
-        dato = 11;
-        for(int i = 0; i < 20; i ++){
-            System.out.println(listaNumeros.buscar(dato));
-            dato++;
-        }
-
-        listaNumeros.appendComienzo(10);
-        listaNumeros.appendEntre(10,11);
-
         System.out.println(listaNumeros);
+
+        listaNumeros.borrar(25);
+        System.out.println(listaNumeros.size());
+
     }
 }

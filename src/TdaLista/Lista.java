@@ -95,4 +95,29 @@ public class Lista<T> {
         return lista;
     }
 
+    public void borrar(T dato) {
+        Nodo anterior = new Nodo();
+        Nodo actual = new Nodo();
+        Nodo siguiente = new Nodo();
+
+        actual.setSiguiente(siguiente);
+        anterior.setSiguiente(actual);
+        siguiente.setSiguiente(inicio);
+
+        while (actual.getSiguiente() != null) {
+
+            if ((actual.getDato() == dato)) {
+                break;
+            }
+            actual = actual.getSiguiente();
+            anterior = anterior.getSiguiente();
+            siguiente = siguiente.getSiguiente();
+
+        }
+
+        anterior.setSiguiente(siguiente);
+
+        size --;
+    }
+
 }
